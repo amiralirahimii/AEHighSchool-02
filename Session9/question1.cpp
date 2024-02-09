@@ -16,7 +16,7 @@ int main(){
 			if(j == 0){
 				board[i][j] = 1;
 			}
-			else{
+			else if(j == 1){
 				board[i][j] = 2;
 			}
 		}
@@ -24,9 +24,11 @@ int main(){
 	
 	
 	for(int i=0; i<3; i++){
-		for(int j=0; j<2; j++){
+		for(int j=0; j<n; j++){
 			cout << board[i][j] << " ";
 		}
 		cout << "\n";
 	}
 }
+
+
