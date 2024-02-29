@@ -17,7 +17,7 @@ bool isPrime(int number){
 int main(){
 	int number;
 	cin >> number;
-	if(isPrime(x) == true){
+	if(isPrime(number) == true){
 		cout << "Is Prime";
 	}
 	else{
