@@ -34,11 +34,11 @@ int getBalance(vector<int> idList, vector<int> balanceList, int id){
 }
 
 void run(){
-	string command;
-	cin >> command;
 	vector<int> idList;
 	vector<int> balanceList;
 	while(true){
+		string command;
+		cin >> command;
 		if(command == "DEPOSIT"){
 			int id, amount;
 			cin >> id >> amount;
