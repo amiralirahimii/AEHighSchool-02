@@ -7,7 +7,7 @@ using namespace std;
 
 int main(){
 	/*
-	line 9 and 10 are equal except if we come out of scope, a will be released
+	line 14 and 15 are equal except if we come out of scope, a will be released
 	automatically but ptr needs to be freed, search about how to free a allocated
 	memory
 	*/
