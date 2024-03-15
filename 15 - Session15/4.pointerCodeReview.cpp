@@ -1,3 +1,4 @@
+//code review, the goal is to find how pointers work and what is output
 int f(int x, int *py, int **ppz) {
     int y, z;
     **ppz += 1;
