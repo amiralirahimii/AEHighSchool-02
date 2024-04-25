@@ -2,28 +2,52 @@
 
 using namespace std;
 
+
 class Date{
-	private:
-		int day;
-		int month;
-		int year;
-		bool isKabise();
-		bool isValid();
-		int howManyDaysThisMonthHas();
-		void incOneDay();
-	public:
-		Date(int day_, int month_, int year_);
-		void setDate(int day_, int month_, int year_);
-		void printDate();
-		void incNDay(int n);
+private:
+	int day;
+	int month;
+	int year;
+	bool isKabise();
+	bool isValid();
+	int howManyDaysThisMonthHas();
+	void incOneDay();
+public:
+	Date(int day_, int month_, int year_);
+	void setDate(int day_, int month_, int year_);
+	void printDate();
+	void incNDay(int n);
+	bool isEqual(Date d);
 };
 
+class Person{
+private:
+	string name;
+	Date bdate;
+	
+public:
+	Person(string name_, int day_, int month_, int year_);
+	void printPerson();
+};
+
+Person::Person(string name_, int day_, int month_, int year_)
+:bdate(day_, month_, year_)
+{
+	name = name_;
+}
+
+void Person::printPerson(){
+	cout << name << " ";
+	bdate.printDate();
+}
 Date::Date(int day_, int month_, int year_){
 	day = day_;
 	month = month_;
 	year = year_;
 	if(!isValid()){
-		abort();
+		day = 1;
+		month=1;
+		year=1;
 	}
 }
 
@@ -97,11 +121,18 @@ void Date::incNDay(int n){
 	}
 }
 
+bool Date::isEqual(Date d){
+	return (day==d.day) && (month==d.month) && (year==d.year);
+}
+
 int main(){
 	Date d(31, 12, 2000);
 	Date d2(31, 12, 2000);
+	cout << d.isEqual(d2)<< endl;
 	d.incNDay(1);
 	d.printDate();
 	d.incNDay(5);
 	d.printDate();
+	Person p1("Amir", 10, 6, 2003);
+	p1.printPerson();
 }
