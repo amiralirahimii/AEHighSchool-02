@@ -30,6 +30,23 @@ public:
 	bool isBirthdayToday(Date d);
 };
 
+class Samane{
+private:
+	string name;
+	vector<Person> personList;
+public:
+	Samane(string name_);
+	void addPerson(Person p);
+};
+
+Samane::Samane(string name_){
+	name = name_;
+}
+
+void addPerson(Person p){
+	personList.push_back(p);
+}
+
 Person::Person(string name_, int day_, int month_, int year_)
 :bdate(day_, month_, year_)
 {
