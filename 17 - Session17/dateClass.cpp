@@ -20,6 +20,7 @@ public:
 	void printDate();
 	void incNDay(int n);
 	bool isEqual(Date d);
+	bool isSameMonthAndDay(Date d);
 };
 
 class Person{
@@ -28,6 +29,9 @@ private:
 	Date bdate;
 public:
 	Person(string name_, int day_, int month_, int year_);
+	string getName(){
+		return name;
+	}
 	void printPerson();
 	bool isBirthdayToday(Date d);
 };
@@ -41,6 +45,7 @@ public:
 	Samane(string name_, int day_, int month_, int year_);
 	void addPerson(Person p);
 	void printSamane();
+	void incOneDay();
 };
 
 Samane::Samane(string name_, int day_, int month_, int year_)
@@ -61,6 +66,15 @@ void Samane::printSamane(){
 	}
 }
 
+void Samane::incOneDay(){
+	todayDate.incNDay(1);
+	for(int i=0; i<personList.size(); i++){
+		if(personList[i].isBirthdayToday(todayDate)){
+			cout << "Happy Birthday  " << personList[i].getName() << "!\n";
+		}
+	}
+}
+
 Person::Person(string name_, int day_, int month_, int year_)
 :bdate(day_, month_, year_)
 {
@@ -73,7 +87,7 @@ void Person::printPerson(){
 }
 
 bool Person::isBirthdayToday(Date d){
-	return bdate.isEqual(d);
+	return bdate.isSameMonthAndDay(d);
 }
 
 Date::Date(int day_, int month_, int year_){
@@ -140,6 +154,7 @@ void Date::printDate(){
 }
 
 void Date::incOneDay(){
+	int a;
 	day++;
 	if(!isValid()) {
 		month++;
@@ -161,10 +176,22 @@ bool Date::isEqual(Date d){
 	return (day==d.day) && (month==d.month) && (year==d.year);
 }
 
+bool Date::isSameMonthAndDay(Date d){
+	return (day==d.day) && (month==d.month);
+}
+
 int main(){
-	Samane samane("Golestan", 10, 5, 2024);
-	Person p("amir", 10, 3, 2003);
-	samane.addPerson(p);
-	samane.addPerson(Person("mamad", 20, 2, 2006));
+	Samane samane("Golestan", 9, 3, 2024);
+	samane.addPerson(Person("amir", 11, 3, 2000));
+	samane.addPerson(Person("amirali", 11, 3, 2005));
+	samane.addPerson(Person("ali", 12, 3, 2010));
+	samane.addPerson(Person("sina", 10, 3, 2000));
+	samane.addPerson(Person("radin", 10, 3, 2006));
+	samane.addPerson(Person("taha", 9, 3, 2006));
 	samane.printSamane();
+	samane.incOneDay();
+	samane.printSamane();
+	samane.incOneDay();
+	samane.printSamane();
+	samane.incOneDay();
 }
