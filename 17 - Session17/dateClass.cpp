@@ -24,10 +24,10 @@ class Person{
 private:
 	string name;
 	Date bdate;
-	
 public:
 	Person(string name_, int day_, int month_, int year_);
 	void printPerson();
+	bool isBirthdayToday(Date d);
 };
 
 Person::Person(string name_, int day_, int month_, int year_)
@@ -40,6 +40,11 @@ void Person::printPerson(){
 	cout << name << " ";
 	bdate.printDate();
 }
+
+bool Person::isBirthdayToday(Date d){
+	return bdate.isEqual(d);
+}
+
 Date::Date(int day_, int month_, int year_){
 	day = day_;
 	month = month_;
