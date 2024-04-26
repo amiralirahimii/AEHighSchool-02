@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include <string>
 
 using namespace std;
 
@@ -36,18 +38,27 @@ private:
 	Date todayDate;
 	vector<Person> personList;
 public:
-	Samane(string name_, day_, month_, year_);
+	Samane(string name_, int day_, int month_, int year_);
 	void addPerson(Person p);
+	void printSamane();
 };
 
-Samane::Samane(string name_, day_, month_, year_)
+Samane::Samane(string name_, int day_, int month_, int year_)
 :todayDate(day_, month_, year_)
 {
 	name = name_;
 }
 
-void addPerson(Person p){
+void Samane::addPerson(Person p){
 	personList.push_back(p);
+}
+
+void Samane::printSamane(){
+	cout << name << " ";
+	todayDate.printDate();
+	for(int i=0; i<personList.size(); i++){
+		personList[i].printPerson();
+	}
 }
 
 Person::Person(string name_, int day_, int month_, int year_)
@@ -151,13 +162,9 @@ bool Date::isEqual(Date d){
 }
 
 int main(){
-	Date d(31, 12, 2000);
-	Date d2(31, 12, 2000);
-	cout << d.isEqual(d2)<< endl;
-	d.incNDay(1);
-	d.printDate();
-	d.incNDay(5);
-	d.printDate();
-	Person p1("Amir", 10, 6, 2003);
-	p1.printPerson();
+	Samane samane("Golestan", 10, 5, 2024);
+	Person p("amir", 10, 3, 2003);
+	samane.addPerson(p);
+	samane.addPerson(Person("mamad", 20, 2, 2006));
+	samane.printSamane();
 }
