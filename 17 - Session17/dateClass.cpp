@@ -33,13 +33,16 @@ public:
 class Samane{
 private:
 	string name;
+	Date todayDate;
 	vector<Person> personList;
 public:
-	Samane(string name_);
+	Samane(string name_, day_, month_, year_);
 	void addPerson(Person p);
 };
 
-Samane::Samane(string name_){
+Samane::Samane(string name_, day_, month_, year_)
+:todayDate(day_, month_, year_)
+{
 	name = name_;
 }
 
