@@ -1,11 +1,13 @@
 #include <iostream>
 
+using namespace std;
+
 class Table{
 private:
 	double height;
 	double width;
 public:
-	Table(height_, width_){
+	Table(double height_,double width_){
 		height = height_;
 		width = width_;
 		if(height<=0 || width<=0){
@@ -34,4 +36,39 @@ public:
 			abort();
 		}
 	}
+	
+	void move(double dt){
+		x = x + dt*vx;
+		y = y + dt*vy;
+		while(x<0 || y<0 || x>table->getWidth() || y>table->getHeight()){
+			if(x<0){
+				x = -x;
+				vx = -vx;
+			}
+			if(x>table->getWidth()){
+				x = 2*table->getWidth() - x;
+				vx = -vx;
+			}
+			if(y<0){
+				y = -y;
+				vy= -vy;
+			}
+			if(y>table->getHeight()){
+				y = 2*table->getHeight() - y;
+				vy = -vy;
+			}
+		}
+	}
+	
+	void print(){
+		cout << "X: " << x << endl;
+		cout << "Y: " << y << endl;
+	}
 };
+
+int main(){
+	Table table(10, 50);
+	Ball ball(5, 10, 6, 12, &table);
+	ball.move(10);
+	ball.print();
+}
